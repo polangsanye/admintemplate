@@ -2,8 +2,8 @@
   * 接口域名的管理
   */
  const base = {
-  sq: 'https://xxxx111111.com/api/v1',
-  bd: 'http://xxxxx22222.com/api'
+  sq: '/hb-mobile-api/hb201901Res/prizeList',
+  bd: '/api/76786'
 }
 
 export default base;

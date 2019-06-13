@@ -1,11 +1,11 @@
-const login = {
+export const login = {
   state: {
     islogin: false,
-    token: '',
+    token: '777',
     count:null
   },
   getters: {
-    leftMenus: state => { return state.islogin}
+    loginToken: state => { return state.token}
   },
   mutations: {
     loginsuccess(state, paylod) {
@@ -13,7 +13,7 @@ const login = {
     }
   },
   actions: {
-    incrementIfOddOnRootSum ({ state, commit}) {
+    incrementIfOddOnRootSum ({ state, commit},paylod) {
       if ((state.count) % 2 === 1) {
         // commit('increment');
       }

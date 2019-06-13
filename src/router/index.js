@@ -6,7 +6,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/slide',
       name: 'slide',
       meta: {
         title: '滑动'
@@ -14,7 +14,7 @@ export default new Router({
       component: () => import('../components/slide')
     },
     {
-      path: '/jiyan',
+      path: '/',
       name: 'jiyan',
       meta: {
         title: '极验'

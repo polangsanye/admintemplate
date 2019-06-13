@@ -1,11 +1,13 @@
 <template>
   <div class="box">
     <div id="geetest"></div>
-    <button class="login_btn" @click="loginHandler">登录</button>
+    <button class="login_btn" @click="loginHandler23">登录</button>
+    {{loginToken}}
+    <div>{{useName}}</div>
   </div>
 </template>
 <script>
-import { Promise } from "q";
+import { mapGetters } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -16,23 +18,41 @@ export default {
     };
   },
   created() {
-   
+    console.log(this.$store.getters.loginToken);
+    console.log(this.$store.state.token); //这样是获取不到的
+  },
+  computed: {
+    useName: function() {
+      return this.$store.state.login.token; //比较和logintoken的区别
+    },
+    ...mapGetters(["loginToken"])
   },
   methods: {
-//     {
-//     "error_no": 0,
-//     "data": {
-//         "success": 1,
-//         "gt": "37ca5631edd1e882721808d35163b3ad",
-//         "challenge": "2df4904f10c0a3f07fc5b60a429d5ef5"
-//     }
-// }
+    loginHandler23() {
+      console.log(process.env.NODE_ENV);
+      this.$api.article
+        .articleList()
+        .then(r => {
+          console.log(r);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    //     {
+    //     "error_no": 0,
+    //     "data": {
+    //         "success": 1,
+    //         "gt": "37ca5631edd1e882721808d35163b3ad",
+    //         "challenge": "2df4904f10c0a3f07fc5b60a429d5ef5"
+    //     }
+    // }
     // 登陆
     loginHandler() {
       this.$http
-        .geetestinfo()//获取  gt success challenge
-        .then(this.init_geetest)// 吊起极验验证弹窗 获取 geetest_challenge， geetest_validate， geetest_seccode
-        .then(this.loginsure)//服务端再次验证 然后登陆成功
+        .geetestinfo() //获取  gt success challenge
+        .then(this.init_geetest) // 吊起极验验证弹窗 获取 geetest_challenge， geetest_validate， geetest_seccode
+        .then(this.loginsure) //服务端再次验证 然后登陆成功
         .catch(err => {
           console.log(err);
         });
@@ -82,7 +102,7 @@ export default {
               let params = {
                 geetest_challenge: result.geetest_challenge,
                 geetest_seccode: result.geetest_seccode,
-                geetest_validate: result.geetest_validate,
+                geetest_validate: result.geetest_validate
                 // username: this.username,
                 // password: this.password
               };
@@ -92,8 +112,7 @@ export default {
           }
         );
       });
-    },
-    
+    }
   }
 };
 </script>
