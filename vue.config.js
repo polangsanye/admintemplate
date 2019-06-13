@@ -3,7 +3,7 @@ const resolve = (dir) => path.join(__dirname, dir);
 
 
 module.exports = {
-  publicPath: process.env.VUE_APP_URL,
+  publicPath: './',
   outputDir: './dist',
   // devServer: {
   //   open: true, //自动打开浏览器

@@ -65,9 +65,9 @@
  // 创建axios实例
  var instance = axios.create({timeout: 1000 * 12});
  // 设置post请求头
- instance.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' ?'http://test-appapis.95155.com':'http://appapis.95155.com';
+axios.defaults.baseURL = process.env.BASE_API === 'development' ?'http://test-appapis.95155.com':'http://appapis.95155.com';
 console.log(axios.defaults.baseURL)
 //
  /**
