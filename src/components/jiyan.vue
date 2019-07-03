@@ -9,6 +9,8 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import formateTime from "utils/formateTime";
+
 export default {
   name: "Login",
   data() {
@@ -21,6 +23,13 @@ export default {
   created() {
     // console.log(this.$store.getters.loginToken);
     // console.log(this.$store.state.token); //这样是获取不到的
+    function isObject(value, type) {
+      return Object.prototype.toString.call(value) === `[object ${type}]`;
+    }
+    
+    let a=[];
+    console.log(isObject(a,'Array'))
+
   },
   computed: {
     useName: function() {
@@ -29,7 +38,7 @@ export default {
     ...mapGetters(["loginToken"])
   },
   methods: {
-    guanbi(){
+    guanbi() {
       this.$loading.hide();
     },
     loginHandler23() {
@@ -42,6 +51,7 @@ export default {
       // this.$toast.error({
       //   text:"4343343"
       // });
+      console.log(formateTime("1562137526000", "yyyy.MM.dd hh-mm-ss"));
       this.$loading.show();
       // console.log(process.env.NODE_ENV);
       // this.$api.article
