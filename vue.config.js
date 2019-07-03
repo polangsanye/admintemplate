@@ -17,13 +17,31 @@ module.exports = {
   //     }
   //   }
   // },
-  chainWebpack: config => {
-    // 添加别名
-    config.resolve.alias
-      .set('@', resolve('src'))
-      .set('assets', resolve('src/assets'))
-      .set('components', resolve('src/components'))
-      .set('base', resolve('src/base'))
-      .set('static', resolve('src/static'));
-  }
+  // chainWebpack: config => {
+  //   // 添加别名
+  //   config.resolve = {
+  //     extensions: ['.js', '.vue', '.json', ".css"],
+  //     alias: {
+  //       'vue$': 'vue/dist/vue.esm.js',
+  //       '@': resolve('src'),
+  //       'assets': resolve('src/assets'),
+  //       'components': resolve('src/components'),
+  //       'base': resolve('src/base'),
+  //       'static': resolve('src/static')
+  //     }
+  //   }
+  // }
+  configureWebpack: config => {
+    config.resolve = {
+      extensions: ['.js', '.vue', '.json', ".css"],
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': resolve('src'),
+        'assets': resolve('src/assets'),
+         'components': resolve('src/components'),
+         'base': resolve('src/base'),
+         'static': resolve('src/static')
+      }
+    }
+  },
 }

@@ -4,6 +4,7 @@
     <button class="login_btn" @click="loginHandler23">登录</button>
     {{loginToken}}
     <div>{{useName}}</div>
+    <div @click="guanbi">ffffff</div>
   </div>
 </template>
 <script>
@@ -18,8 +19,8 @@ export default {
     };
   },
   created() {
-    console.log(this.$store.getters.loginToken);
-    console.log(this.$store.state.token); //这样是获取不到的
+    // console.log(this.$store.getters.loginToken);
+    // console.log(this.$store.state.token); //这样是获取不到的
   },
   computed: {
     useName: function() {
@@ -28,16 +29,29 @@ export default {
     ...mapGetters(["loginToken"])
   },
   methods: {
+    guanbi(){
+      this.$loading.hide();
+    },
     loginHandler23() {
-      console.log(process.env.NODE_ENV);
-      this.$api.article
-        .articleList()
-        .then(r => {
-          console.log(r);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      // this.$toast({
+      //   text:"4343343"
+      // })
+      // this.$toast.success({
+      //   text:"4343343"
+      // })
+      // this.$toast.error({
+      //   text:"4343343"
+      // });
+      this.$loading.show();
+      // console.log(process.env.NODE_ENV);
+      // this.$api.article
+      //   .articleList()
+      //   .then(r => {
+      //     console.log(r);
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
     },
     //     {
     //     "error_no": 0,

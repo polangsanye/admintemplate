@@ -8,14 +8,16 @@ export const login = {
     loginToken: state => { return state.token}
   },
   mutations: {
-    loginsuccess(state, paylod) {
-      state.islogin = paylod.islogin
+    loginsuccess(state, payload) {
+      // state.obj = { ...state.obj, newProp: 123 }
+      let {isLogin} = payload;
+      state.islogin =isLogin;
     }
   },
   actions: {
     incrementIfOddOnRootSum ({ state, commit},paylod) {
       if ((state.count) % 2 === 1) {
-        // commit('increment');
+        commit('loginsuccess');
       }
     }
   }
