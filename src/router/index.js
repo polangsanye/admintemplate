@@ -6,6 +6,14 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      name: 'cropper',
+      meta: {
+        title: ''
+      },
+      component: () => import('../components/cropper')
+    },
+    {
       path: '/slide',
       name: 'slide',
       meta: {
@@ -14,7 +22,7 @@ export default new Router({
       component: () => import('../components/slide')
     },
     {
-      path: '/',
+      path: '/jiyan',
       name: 'jiyan',
       meta: {
         title: '极验'
